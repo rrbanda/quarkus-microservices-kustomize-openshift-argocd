@@ -8,4 +8,4 @@
      values:                                                                                                                                     
        global:                                                                                                                                   
          hosts:                                                                                                                                  
-           domain: apps.deltaday.sandbox1835.opentlc.com   # Replace <new-domain> with your desired domain     
+           domain: apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com   # Replace <new-domain> with your desired domain     
