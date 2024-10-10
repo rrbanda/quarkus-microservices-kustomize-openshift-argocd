@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: cluster-config/gitlab/operators
+    path: cluster-config/gitlab/instances
     repoURL:  https://github.com/ocp-devspaces-gamification/quarkus-microservices-kustomize-openshift-argocd.git
     targetRevision: main
   syncPolicy:
