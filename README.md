@@ -80,6 +80,12 @@ Showcase how to create, configure, and deploy multiple Quarkus microservices usi
 8. **Verify and Monitor Deployment:**
    - Use ArgoCD’s UI to verify that the applications are synchronized.
    - Access the service URLs to ensure they are running with updated configurations.
+   - **List Endpoints:**
+     - To list the endpoints (services) created in your OpenShift cluster, use the following command:
+       ```bash
+       oc get services
+       ```
+     - This command will display a list of services along with their names, types, cluster IPs, and ports.
    - Monitor logs and metrics via the OpenShift console.
 
 9. **Showcase GitOps and ArgoCD Features:**
