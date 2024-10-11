@@ -1,0 +1,46 @@
+schemaVersion: 2.2.2
+metadata:
+  name: dev-services-1
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      env:
+        - name: QUARKUS_HTTP_HOST
+          value: 0.0.0.0
+      endpoints:
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: greet-attendee
+          protocol: https
+          targetPort: 8080
+          path: /api/hello
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+      mountSources: true
+  - name: m2
+    volume:
+      size: 1G
+commands:
+  - id: package
+    exec:
+      label: "1. Package the application"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/dev-services-1
+      commandLine: "mvn package"
+      group:
+        kind: build
+        isDefault: true
+  - id: livecoding
+    exec:
+      label: "2. Start Development mode"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/dev-services-1
+      commandLine: "mvn compile quarkus:dev"
+      group:
+        kind: run
+        isDefault: true
