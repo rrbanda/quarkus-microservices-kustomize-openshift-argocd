@@ -43,3 +43,6 @@ nb-configuration.xml
 /.quarkus/cli/plugins/
 # TLS Certificates
 .certs/
+aider-env/
+aider-env/bin/activate
+aider_setup.sh
