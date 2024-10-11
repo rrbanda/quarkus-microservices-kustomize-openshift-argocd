@@ -1,6 +1,6 @@
 schemaVersion: 2.2.2
 metadata:
-  name: dev-services-1
+  name: dev-services
 components:
   - name: tools
     container:
@@ -50,9 +50,6 @@ commands:
       component: tools
       workingDir: /tmp
       commandLine: |
-        #!/bin/bash
-        set -e
-
         echo "Installing Quarkus CLI..."
         QUARKUS_VERSION=2.16.6.Final
         curl -L https://github.com/quarkusio/quarkus/releases/download/${QUARKUS_VERSION}/quarkus-${QUARKUS_VERSION}-linux-amd64.tar.gz -o quarkus-cli.tar.gz
@@ -66,9 +63,3 @@ commands:
         curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
         sudo mv kustomize /usr/local/bin/
         echo "Kustomize CLI installed successfully."
-      group:
-        kind: init
-        isDefault: true
-events:
-  postStart:
-    - install-clis
