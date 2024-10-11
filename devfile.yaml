@@ -44,3 +44,24 @@ commands:
       group:
         kind: run
         isDefault: true
+events:
+  postStart:
+    - exec:
+        component: tools
+        commandLine: |
+          #!/bin/bash
+          set -e
+
+          echo "Installing Quarkus CLI..."
+          QUARKUS_VERSION=2.16.6.Final
+          curl -L https://github.com/quarkusio/quarkus/releases/download/${QUARKUS_VERSION}/quarkus-${QUARKUS_VERSION}-linux-amd64.tar.gz -o quarkus-cli.tar.gz
+          tar -xzf quarkus-cli.tar.gz
+          mv quarkus /usr/local/bin/
+          rm quarkus-cli.tar.gz
+          echo "Quarkus CLI installed successfully."
+
+          echo "Installing Kustomize CLI..."
+          KUSTOMIZE_VERSION=v5.0.3
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          mv kustomize /usr/local/bin/
+          echo "Kustomize CLI installed successfully."
