@@ -28,3 +28,9 @@ public class GreetingResource {
         return "Innovation distinguishes between a leader and a follower. - Steve Jobs";
     }
 }
+    @GET
+    @Path("/quote/information-technology")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String quoteInformationTechnology() {
+        return "Information technology and business are becoming inextricably interwoven. I don't think anybody can talk meaningfully about one without talking about the other. - Bill Gates";
+    }
