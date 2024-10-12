@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: service-a
-        image: quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/user1/service-a:latest
+        image: quay-registry-quay-quay-registry.apps.example.com/user1/service-a:latest
         ports:
         - containerPort: 8080
       imagePullSecrets:

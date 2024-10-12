@@ -11,7 +11,7 @@
 
 2. **Build the application:**
    ```sh
-   ./mvnw clean package
+   ./mvnw clean package -Dnative
    ```
 
 3. Login to Quay registry 
@@ -22,12 +22,13 @@
 4. **Build the Docker image:**
   ![20241012090915](https://i.imgur.com/UJgjwrl.png)
    ```sh
-   docker build -t quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-a:latest .
+   USERNAME="user1"
+   docker build -t quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/${USERNAME}/service-a:latest -f src/main/docker/Dockerfile.jvm .
    ```
 
 5. **Push the Docker image to your registry:**
    ```sh
-   docker push quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-a:latest
+   docker push quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/${USERNAME}/service-a:latest
    ```
 
 ### For `service-b`
@@ -39,18 +40,19 @@
 
 2. **Build the application:**
    ```sh
-   ./mvnw clean package
+   ./mvnw clean package -Dnative
    ```
 
 3. **Build the Docker image:**
    ![20241012091450](https://i.imgur.com/ViemEOk.png)
    ```sh
-   docker build -t quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-b:latest .
+   USERNAME="user1"
+   docker build -t quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/${USERNAME}/service-b:latest -f src/main/docker/Dockerfile.jvm .
    ```
 
 4. **Push the Docker image to your registry:**
    ```sh
-   docker push yquay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-b:latest
+   docker push quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/${USERNAME}/service-b:latest
    ```
 
 ## Testing the Applications Locally
