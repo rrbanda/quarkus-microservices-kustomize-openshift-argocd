@@ -3,11 +3,11 @@
 #### **Objective:**
 Showcase how to create, configure, and deploy multiple Quarkus microservices using Kustomize for configuration management, OpenShift Dev Spaces for development, and ArgoCD for continuous delivery.
 
-### Optional: 
+### Optional:
 * Fork Repo into personal repo
-* Update the files below for your enviornment 
+* Update the files below for your enviornment
 `Change the Git URL to yours`
-```ssh 
+```ssh
 $ ls -l  cluster-config/apps/devspaces
 total 36
 -rw-rw-r--. 1 user user 602 Oct 12 14:19 cert-manager-operator.yaml
@@ -22,22 +22,22 @@ total 36
 ```
 
 `Change the Domain`
-```ssh 
+```ssh
 $ cat cluster-config/gitlab/instances/patch-gitlab-domain.yaml
- apiVersion: apps.gitlab.com/v1beta1                                                                                                             
- kind: GitLab                                                                                                                                    
- metadata:                                                                                                                                       
-   name: gitlab                                                                                                                                  
-   namespace: gitlab-system                                                                                                                      
- spec:                                                                                                                                           
-   chart:                                                                                                                                        
-     values:                                                                                                                                     
-       global:                                                                                                                                   
-         hosts:                                                                                                                                  
-           domain: apps.cluster-xxxxx.xxxxx.sandbox0000.opentlc.com 
+ apiVersion: apps.gitlab.com/v1beta1
+ kind: GitLab
+ metadata:
+   name: gitlab
+   namespace: gitlab-system
+ spec:
+   chart:
+     values:
+       global:
+         hosts:
+           domain: apps.cluster-xxxxx.xxxxx.sandbox0000.opentlc.com
 ```
 * Configure Cluster
-```sh 
+```sh
 oc apply -k cluster-config/apps/devspaces
 ```
 
@@ -56,7 +56,7 @@ oc apply -k cluster-config/apps/devspaces
    ./mvnw clean package -Dnative
    ```
 
-3. Login to Quay registry 
+3. Login to Quay registry
   ```sh
   docker login quay-registry-quay-quay-registry.apps.your-ocp4-cluster.com
   ```
@@ -122,7 +122,7 @@ oc apply -k cluster-config/apps/devspaces
    ```
 
 ## Deploying the Applications Using Kustomize
-### Update the following file 
+### Update the following file
 ```sh
 $ cat cluster-config/service-a/patch-pull-secret-data.yaml
 apiVersion: v1
@@ -134,7 +134,7 @@ data:
   .dockerconfigjson: CHANGEME
 ```
 
-```sh 
+```sh
 $ cat cluster-config/service-a/patch-image.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -163,20 +163,20 @@ spec:
 ```
 
 ### Example Deployment and Service for `service-a`
-```sh 
-# Test the configuration 
+```sh
+# Test the configuration
 kustomize build cluster-config/service-a
 
-# Deploy the configurtation 
+# Deploy the configurtation
  oc apply -k cluster-config/service-a
 ```
 
 ### Example Deployment and Service for `service-b`
-```sh 
-# Test the configuration 
+```sh
+# Test the configuration
 kustomize build cluster-config/service-b
 
-# Deploy the configurtation 
+# Deploy the configurtation
 oc apply -k cluster-config/service-b
 ```
 
@@ -196,5 +196,5 @@ $ curl -w '\n' https://$(oc get routes -n microservice-demo | grep service-b | a
 The technology you use impresses no one. The experience you create with it is everything. - Sean Gerety
 ```
 
-# Bonus 
+# Bonus
 * Integrate the service with ArgoCD so it is integrated with the cluster deployment.
