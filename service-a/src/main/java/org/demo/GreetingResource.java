@@ -22,20 +22,6 @@ public class GreetingResource {
         return "Imagination is more important than knowledge. - Albert Einstein";
     }
 
-    @GET
-    @Path("/quote/steve-jobs")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String quoteSteveJobs() {
-        return "Innovation distinguishes between a leader and a follower. - Steve Jobs";
-    }
-
-    @GET
-    @Path("/quote/bill-gates")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String quoteBillGates() {
-        return "Information technology and business are becoming inextricably interwoven. I don't think anybody can talk meaningfully about one without talking about the other. - Bill Gates";
-    }
-
     // Famous Scientists
     @GET
     @Path("/quote/isaac-newton")
