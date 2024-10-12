@@ -122,7 +122,7 @@ oc apply -k cluster-config/apps/devspaces
    ```
 
 ## Deploying the Applications Using Kustomize
-### Update the following file
+### Update the following files
 ```sh
 $ cat cluster-config/service-a/patch-pull-secret-data.yaml
 apiVersion: v1
