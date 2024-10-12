@@ -14,14 +14,20 @@
    ./mvnw clean package
    ```
 
-3. **Build the Docker image:**
+3. Login to Quay registry 
+  ```sh
+  docker login quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com
+  ```
+
+4. **Build the Docker image:**
+
    ```sh
-   docker build -t your-docker-registry/service-a:latest .
+   docker build -t quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-a:latest .
    ```
 
-4. **Push the Docker image to your registry:**
+5. **Push the Docker image to your registry:**
    ```sh
-   docker push your-docker-registry/service-a:latest
+   docker push quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.comservice-a:latest
    ```
 
 ### For `service-b`
