@@ -81,7 +81,7 @@ oc apply -k cluster-config/apps/devspaces
 
 2. **Build the application:**
    ```sh
-   ./mvnw clean package
+   ./mvnw clean package -Dnative
    ```
 
 3. **Build the Docker image:**
