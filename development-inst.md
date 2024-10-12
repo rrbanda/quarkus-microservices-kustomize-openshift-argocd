@@ -27,7 +27,7 @@
 
 5. **Push the Docker image to your registry:**
    ```sh
-   docker push quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.comservice-a:latest
+   docker push quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-a:latest
    ```
 
 ### For `service-b`
@@ -44,12 +44,12 @@
 
 3. **Build the Docker image:**
    ```sh
-   docker build -t your-docker-registry/service-b:latest .
+   docker build -t quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-b:latest .
    ```
 
 4. **Push the Docker image to your registry:**
    ```sh
-   docker push your-docker-registry/service-b:latest
+   docker push yquay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-b:latest
    ```
 
 ## Testing the Applications Locally
