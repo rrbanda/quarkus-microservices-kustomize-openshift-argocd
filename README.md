@@ -5,7 +5,7 @@ Showcase how to create, configure, and deploy multiple Quarkus microservices usi
 
 ### Optional:
 * Fork Repo into personal repo
-* Update the files below for your enviornment
+* Update the files below for your enviornment  
 `Change the Git URL to yours`
 ```ssh
 $ ls -l  cluster-config/apps/devspaces
