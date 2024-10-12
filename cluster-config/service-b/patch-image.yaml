@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-b
+spec:
+  template:
+    spec:
+      containers:
+      - name: service-b
+        image: quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/user1/service-b
