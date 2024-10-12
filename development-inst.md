@@ -20,7 +20,7 @@
   ```
 
 4. **Build the Docker image:**
-
+  ![20241012090915](https://i.imgur.com/UJgjwrl.png)
    ```sh
    docker build -t quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-a:latest .
    ```
@@ -43,6 +43,7 @@
    ```
 
 3. **Build the Docker image:**
+   ![20241012091450](https://i.imgur.com/ViemEOk.png)
    ```sh
    docker build -t quay-registry-quay-quay-registry.apps.cluster-hzjdg.hzjdg.sandbox2168.opentlc.com/service-b:latest .
    ```
