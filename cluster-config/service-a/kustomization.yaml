@@ -12,4 +12,3 @@ resources:
 
 patchesStrategicMerge:
   - patch-image.yaml
-  - patch-pull-secret.yaml
