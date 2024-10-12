@@ -9,3 +9,6 @@ resources:
   - service-a-deployment.yaml
   - service-a-service.yaml
   - pull-secret.yaml
+
+patchesStrategicMerge:
+  - patch-image.yaml
