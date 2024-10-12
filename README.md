@@ -5,7 +5,41 @@ Showcase how to create, configure, and deploy multiple Quarkus microservices usi
 
 ### Optional: 
 * Fork Repo into personal repo
-  * Update 
+* Update the files below for your enviornment 
+`Change the Git URL to yours`
+```ssh 
+$ ls -l  cluster-config/apps/devspaces
+total 36
+-rw-rw-r--. 1 user user 602 Oct 12 14:19 cert-manager-operator.yaml
+-rw-rw-r--. 1 user user 612 Oct 12 14:19 devspaces-instance.yaml
+-rw-rw-r--. 1 user user 611 Oct 12 14:19 devspaces-operator.yaml
+-rw-rw-r--. 1 user user 590 Oct 12 14:19 gitlab-instance.yaml
+-rw-rw-r--. 1 user user 590 Oct 12 14:19 gitlab-operator.yaml
+-rw-rw-r--. 1 user user 668 Oct 12 14:19 openshift-container-storage-noobaa.yaml
+-rw-rw-r--. 1 user user 682 Oct 12 14:19 openshift-data-foundation-operator.yaml
+-rw-rw-r--. 1 user user 652 Oct 12 14:19 quay-registry-instance.yaml
+-rw-rw-r--. 1 user user 656 Oct 12 14:19 quay-registry-operator.yaml
+```
+
+`Change the Domain`
+```ssh 
+$ cat cluster-config/gitlab/instances/patch-gitlab-domain.yaml
+ apiVersion: apps.gitlab.com/v1beta1                                                                                                             
+ kind: GitLab                                                                                                                                    
+ metadata:                                                                                                                                       
+   name: gitlab                                                                                                                                  
+   namespace: gitlab-system                                                                                                                      
+ spec:                                                                                                                                           
+   chart:                                                                                                                                        
+     values:                                                                                                                                     
+       global:                                                                                                                                   
+         hosts:                                                                                                                                  
+           domain: apps.cluster-xxxxx.xxxxx.sandbox0000.opentlc.com 
+```
+* Configure Cluster
+```sh 
+oc apply -k cluster-config/apps/devspaces
+```
 
 #### **Demo Steps:**
 ## Building the Applications
