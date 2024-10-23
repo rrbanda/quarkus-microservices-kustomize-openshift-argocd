@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: service-a
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: microservice-demo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: cluster-config/service-a
+    repoURL:  https://github.com/ocp-devspaces-gamification/quarkus-microservices-kustomize-openshift-argocd.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
