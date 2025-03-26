@@ -1,30 +1,45 @@
 schemaVersion: 2.2.2
 metadata:
   name: dev-services
+  version: 1.0.0
+  displayName: Dev Services with Quarkus and Kustomize
+  description: Quarkus dev environment with helpful CLI tooling
+  tags:
+    - quarkus
+    - java
+    - kustomize
+    - devspaces
 components:
   - name: tools
     container:
       image: quay.io/devfile/universal-developer-image:ubi8-latest
+      cpuRequest: 750m
+      cpuLimit: "1.5"
+      memoryRequest: 2Gi
+      memoryLimit: 4Gi
+      mountSources: true
+      sourceMapping: /projects
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
       endpoints:
-        - exposure: none
-          name: debug
-          protocol: tcp
+        - name: debug
           targetPort: 5005
-        - exposure: public
-          name: greet-attendee
-          protocol: https
+          exposure: none
+          protocol: tcp
+        - name: greet-attendee
           targetPort: 8080
+          exposure: public
+          protocol: https
           path: /api/hello
       volumeMounts:
         - name: m2
           path: /home/user/.m2
-      mountSources: true
+
   - name: m2
     volume:
-      size: 1G
+      size: 2Gi
+
 commands:
   - id: package
     exec:
@@ -35,6 +50,7 @@ commands:
       group:
         kind: build
         isDefault: true
+
   - id: livecoding
     exec:
       label: "2. Start Development mode"
@@ -44,6 +60,7 @@ commands:
       group:
         kind: run
         isDefault: true
+
   - id: install-clis
     exec:
       label: "3. Install Quarkus and Kustomize CLI"
@@ -54,8 +71,8 @@ commands:
         QUARKUS_VERSION=2.16.6.Final
         curl -L https://github.com/quarkusio/quarkus/releases/download/${QUARKUS_VERSION}/quarkus-${QUARKUS_VERSION}-linux-amd64.tar.gz -o quarkus-cli.tar.gz
         tar -xzf quarkus-cli.tar.gz
-        sudo mv quarkus /usr/local/bin/
-        rm quarkus-cli.tar.gz
+        sudo mv quarkus-${QUARKUS_VERSION}/bin/quarkus /usr/local/bin/
+        rm -rf quarkus-${QUARKUS_VERSION} quarkus-cli.tar.gz
         echo "Quarkus CLI installed successfully."
 
         echo "Installing Kustomize CLI..."
