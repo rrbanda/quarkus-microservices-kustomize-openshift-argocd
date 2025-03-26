@@ -11,6 +11,9 @@ metadata:
     - devspaces
     - vscode
 
+attributes:
+  controller.devfile.io/editor-type: che-code
+
 components:
   - name: tools
     container:
@@ -49,11 +52,6 @@ components:
   - name: npm
     volume:
       size: 1Gi
-
-  - name: che-code
-    plugin:
-      id: ms-toolshed.vscode-editor
-      registryUrl: https://devfile.io/plugin-registry
 
 commands:
   - id: package
