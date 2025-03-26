@@ -2,13 +2,15 @@ schemaVersion: 2.2.2
 metadata:
   name: dev-services
   version: 1.0.0
-  displayName: Dev Services with Quarkus and Kustomize
-  description: Quarkus dev environment with helpful CLI tooling
+  displayName: Dev Services with Quarkus, Kustomize, and Python
+  description: Quarkus dev environment with helpful CLI tooling and Python for Konveyor Kai
   tags:
     - quarkus
     - java
     - kustomize
+    - python
     - devspaces
+
 components:
   - name: tools
     container:
@@ -22,6 +24,8 @@ components:
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
+        - name: PYTHON_VERSION
+          value: "3.11"
       endpoints:
         - name: debug
           targetPort: 5005
@@ -35,10 +39,21 @@ components:
       volumeMounts:
         - name: m2
           path: /home/user/.m2
+        - name: npm
+          path: /home/user/.npm
 
   - name: m2
     volume:
       size: 2Gi
+
+  - name: npm
+    volume:
+      size: 1Gi
+
+  - name: che-code
+    plugin:
+      id: ms-toolshed.vscode-editor
+      registryUrl: 'https://devspaces.apps.cluster-wnkkk.wnkkk.sandbox3019.opentlc.com/plugin-registry/v3'
 
 commands:
   - id: package
