@@ -2,14 +2,14 @@ schemaVersion: 2.2.2
 metadata:
   name: dev-services
   version: 1.0.0
-  displayName: Dev Services with Quarkus, Kustomize, and Python
-  description: Quarkus dev environment with helpful CLI tooling and Python for Konveyor Kai
+  displayName: Dev Services with Quarkus and Kustomize
+  description: Quarkus dev environment with helpful CLI tooling and VS Code
   tags:
     - quarkus
     - java
     - kustomize
-    - python
     - devspaces
+    - vscode
 
 components:
   - name: tools
@@ -53,7 +53,7 @@ components:
   - name: che-code
     plugin:
       id: ms-toolshed.vscode-editor
-      registryUrl: 'https://devspaces.apps.cluster-wnkkk.wnkkk.sandbox3019.opentlc.com/plugin-registry/v3'
+      registryUrl: https://devfile.io/plugin-registry
 
 commands:
   - id: package
